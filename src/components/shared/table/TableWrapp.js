@@ -1,7 +1,7 @@
 import { TableStyleWrapp } from "../../../styled/invoice/TableStyle";
 import Tabler from "./Tabler";
 import Paginate from "../paginate/Paginate";
-import { INVOICES } from "../../../constanst/types";
+import { INVOICES, PER_PAGE } from "../../../constanst/types";
 
 const TableWrapp = ({tittle, data, counterIndex, setCounterIndex }) => {  
    return (
@@ -11,10 +11,10 @@ const TableWrapp = ({tittle, data, counterIndex, setCounterIndex }) => {
           data={data} 
           counterIndex={counterIndex} 
         />
-      {data.length > 3 && 
+      {data.length > PER_PAGE && 
         <Paginate 
-          totalPages= {parseInt(((data.length-1)/3)+1)} 
-          currentPage={parseInt((counterIndex/3)+1)} 
+          totalPages= {parseInt(((data.length-1)/PER_PAGE)+1)} 
+          currentPage={parseInt((counterIndex/PER_PAGE)+1)} 
           counterIndex={counterIndex} 
           setCounterIndex={setCounterIndex}  
       />}

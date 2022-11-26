@@ -3,7 +3,7 @@ import { getInvoices } from "../api_service/invoice_service";
 import { getAllSellers } from "../api_service/seller_service";
 import { getAllCustomers } from "../api_service/customer_service";
 
-const useFetch = () => {
+const useFetch = (data) => {
     const [allInvoices, setAllInvoices] = useState([]);
     const [allSellers, setAllSellers] = useState([]);
     const [allCustomers, setAllCustomers] = useState([]);
@@ -30,7 +30,7 @@ const useFetch = () => {
         fetchCustomers();
     }
 
-   useEffect(()=> initCall(), [])
+   useEffect(()=> initCall(), [data])
     
   return {allInvoices, setAllInvoices, allSellers, allCustomers};
 }

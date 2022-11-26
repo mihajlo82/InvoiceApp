@@ -1,27 +1,9 @@
-import { TablerBodyCell, Text } from "../../../../styled/invoice/TableStyle";
-import useFetch from "../../../../context/useFetch";
-import { useEffect, useState } from "react";
+import { TablerBodyCell, Text } from "../../../../styled/invoice/TableStyle"; 
+import useSingleInvoice from "./useSingleInvoice";
+import { invoiceSchema } from "../../../../data/objectSchema";
 
 const SingleInvoiceTable = ({item, findItem}) => {
-  const [sellerName, setSellerName] = useState('');
-  const [customerName, setCustomerName] = useState('');
-  const {allSellers, allCustomers} = useFetch(); 
-
-  useEffect(()=> {
-    setupNames();
-    
-    return () => setupNames();
-    
-  }, [item, allSellers, allCustomers])
-
-  const setupNames = async() => {
-    const resName = await findItem(allSellers, item, 'seller'); 
-    const customerName = await findItem(allCustomers, item, 'customer');
-
-    setSellerName(resName?.name);
-    setCustomerName(customerName?.name);
-  }
-  
+  const {sellerName, customerName} = useSingleInvoice(item, findItem); 
   return (
     <>
         <TablerBodyCell>
@@ -38,4 +20,9 @@ const SingleInvoiceTable = ({item, findItem}) => {
   )
 }
 
-export default SingleInvoiceTable
+export default SingleInvoiceTable;
+
+SingleInvoiceTable.defaultProps = {
+  item: invoiceSchema,
+  findItem: ()=>{}
+}

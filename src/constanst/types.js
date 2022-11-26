@@ -10,3 +10,6 @@ export const ADD_MODE = 'add';
 // SINGLE TYPE
 export const SELLER_SINGLE = 'seller';
 export const CUSTOMER_SINGLE = 'customer';
+
+//ITEMS PER PAGE - PAGINATE
+export const PER_PAGE = 5;

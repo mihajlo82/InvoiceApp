@@ -9,7 +9,7 @@ const AppContext = ({children}) => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [counterIndex, setCounterIndex] = useState(0); 
-    const {allInvoices, setAllInvoices} = useFetch(); 
+    const {allInvoices, setAllInvoices} = useFetch(data); 
 
   return (
     <MyContext.Provider

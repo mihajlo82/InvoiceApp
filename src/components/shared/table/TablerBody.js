@@ -1,6 +1,6 @@
 import TablerSingle from "./TablerSingle";
 import { TablerBodyWrappStyle } from "../../../styled/invoice/TableStyle";
-import { INVOICES } from "../../../constanst/types";
+import { INVOICES, PER_PAGE } from "../../../constanst/types";
 
 const TablerBody = ({data, selectedItems, setSelectedItems, tittle, counterIndex}) => {
   
@@ -10,7 +10,7 @@ const TablerBody = ({data, selectedItems, setSelectedItems, tittle, counterIndex
   }
 
   const findItem = (allData, item, type) => {
-    if(type=== 'seller'){
+    if(type === 'seller'){
       const singleSeller = allData.find(seller => seller.id === item?.seller?.id); 
       return singleSeller;
     }else{
@@ -22,7 +22,7 @@ const TablerBody = ({data, selectedItems, setSelectedItems, tittle, counterIndex
   return (
     <TablerBodyWrappStyle>
       {!!data.length > 0 && data.map((item, i) => 
-        (i >= counterIndex && i< counterIndex+3) && 
+        (i >= counterIndex && i< counterIndex+PER_PAGE) && 
             <TablerSingle
                 key={item.id} 
                 item={item}

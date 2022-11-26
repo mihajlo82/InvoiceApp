@@ -15,7 +15,7 @@ const useActionSettings = (tittle,allInvoices, selectedItems, data, setData, set
     }
 
     const checkIsInInvoices = () =>{
-       const deletedIds = selectedItems.map( selectedItem => selectedItem.id);
+       const deletedIds = selectedItems.map( selectedItem => selectedItem.id); 
 
        if(tittle===SELLERS) return allInvoices.some(selItem => deletedIds.includes(selItem.seller.id));      
        else if(tittle===CUSTOMERS) return allInvoices.some(customerItem => deletedIds.includes(customerItem.customer.id));
@@ -23,8 +23,7 @@ const useActionSettings = (tittle,allInvoices, selectedItems, data, setData, set
     }
 
     const deleteItemsGeneric = (functionName) => {
-
-        const checkIsItemUsedInInvoice = checkIsInInvoices();
+        const checkIsItemUsedInInvoice = checkIsInInvoices(); 
 
         if(!checkIsItemUsedInInvoice){
             functionName(selectedItems)
@@ -43,7 +42,7 @@ const useActionSettings = (tittle,allInvoices, selectedItems, data, setData, set
             .finally(()=> resetItems());
         }else{
             showError('Item is active in invoices!', 1500);
-            resetItems()
+            resetItems();
         }
     }
     
